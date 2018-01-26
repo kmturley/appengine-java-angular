@@ -35,11 +35,11 @@ public class HelloAppEngine extends HttpServlet {
   public void doGet(HttpServletRequest request, HttpServletResponse response)
       throws IOException {
     Properties properties = System.getProperties();
-
-    response.setContentType("text/plain");
-    response.getWriter().println("Hello App Engine - Standard using "
+    response.addHeader("Access-Control-Allow-Origin", "*");
+    response.setContentType("application/json");
+    response.getWriter().println("{\"message\": \"Hello App Engine - Standard using "
             + SystemProperty.version.get() + " Java "
-            + properties.get("java.specification.version"));
+            + properties.get("java.specification.version") + "\"}");
   }
 
   public static String getInfo() {

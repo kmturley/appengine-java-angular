@@ -17,7 +17,7 @@ services:
 
   backend:
     build: ./backend
-    command: mvn appengine:run
+    command: mvn appengine:run # gradle appengineRun
     environment:
       NODE_ENV: development
     networks:

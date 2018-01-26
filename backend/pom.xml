@@ -111,6 +111,7 @@ limitations under the License.
           <port>8080</port>
           <host>0.0.0.0</host>
           <admin_host>0.0.0.0</admin_host>
+          <use_mtime_file_watcher>true</use_mtime_file_watcher>
         </configuration>
       </plugin>
       <!-- [END cloudplugin] -->

@@ -1,4 +1,5 @@
 FROM maven:3.5.2-jdk-8
+# FROM openjdk:8-jdk
 
 # Install the Google Cloud SDK.
 RUN echo "deb http://packages.cloud.google.com/apt cloud-sdk-jessie main" | tee /etc/apt/sources.list.d/google-cloud-sdk.list
