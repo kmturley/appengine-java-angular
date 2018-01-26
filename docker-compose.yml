@@ -1,0 +1,46 @@
+version: '3'
+services:
+
+  frontend:
+    build: ./frontend
+    command: npm start
+    environment:
+      NODE_ENV: development
+    networks:
+      - backend
+    ports:
+      - '4200:4200'
+    volumes:
+      - ./frontend:/usr/src/app:rw
+      # - ~/.config/:/root/.config
+      - /usr/src/app/node_modules
+
+  backend:
+    build: ./backend
+    command: mvn appengine:run
+    environment:
+      NODE_ENV: development
+    networks:
+      - backend
+    ports:
+      - '8080:8080'
+    volumes:
+      - ./backend:/usr/src/app:rw
+      # - ~/.config/:/root/.config
+
+  # db:
+  #   image: mysql:5.5
+  #   networks:
+  #     - backend
+  #   volumes:
+  #     - /var/lib/mysql
+  #     - ./project/database.sql:/docker-entrypoint-initdb.d/dump.sql
+  #   environment:
+  #     MYSQL_ROOT_PASSWORD: database
+  #     MYSQL_USER: database
+  #     MYSQL_PASSWORD: database
+  #     MYSQL_DATABASE: database_local
+
+networks:
+  backend:
+    driver: bridge
